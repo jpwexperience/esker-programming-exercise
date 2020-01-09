@@ -41,18 +41,22 @@ function main(entryArgs){
 function lineParse(line){
 	totalLines++;
 	let letterRegex = /[a-zA-Z]/;
+	let wordRegex = /^[a-zA-Z]+$/;
 	let digitRegex = /[0-9]/;
-	let figureRegex = /[0-9]+/g;
-	lineWords = line.split(" ");
-	totalWords += lineWords.length;
+	let figureRegex = /^[0-9]+$/;
+	let whiteSpaceReg = /[ ,]+/;
+	lineWords = line.split(whiteSpaceReg);
 	for(var i = 0; i < lineWords.length; i++){
 		let tempWord = lineWords[i];
 		totalChars += tempWord.length;
 		let wordLength = tempWord.length;
-		if(wordLengths[wordLength] === undefined){
-			wordLengths[wordLength] = 1;
-		} else {
-			wordLengths[wordLength]++;
+		if(tempWord.match(wordRegex)){
+			totalWords++;
+			if(wordLengths[wordLength] === undefined){
+				wordLengths[wordLength] = 1;
+			} else {
+				wordLengths[wordLength]++;
+			}
 		}
 		let figures = tempWord.match(figureRegex);
 		if(figures != null){
@@ -79,15 +83,21 @@ function infoOutput(path){
 	console.log("Number of figures: " + totalFigures);
 	console.log("Number of other characters: " + totalOthers);
 	console.log("Number of words: " + totalWords);
-	let sortedWordKeys = Object.keys(wordLengths).sort();
-	for(var i = 0; i < sortedWordKeys.length; i++){
-		let outString = "Number of " + sortedWordKeys[i];
-		if(parseInt(sortedWordKeys[i]) > 1){
+	let sortedWords = [];
+	for(var len in wordLengths){
+		sortedWords.push([len, wordLengths[len]]);
+	}
+	sortedWords.sort(function(a, b){
+		return b[1] - a[1];
+	});
+	for(var i = 0; i < sortedWords.length; i++){
+		let outString = "Number of " + sortedWords[i][0];
+		if(parseInt(sortedWords[i][0]) > 1){
 			outString += " letters ";
 		} else {
 			outString += " letter ";
 		}
-		outString += "words: " + wordLengths[sortedWordKeys[i]];
+		outString += "words: " + sortedWords[i][1];
 		console.log(outString);
 	}
 }
