@@ -25,7 +25,6 @@ function main(entryArgs){
 			input: fs.createReadStream(filePath)
 		});
 		fileInterface.on('line', function(line){
-			console.log(line);
 			lineParse(line);
 		});
 		fileInterface.on('close', function(line){
