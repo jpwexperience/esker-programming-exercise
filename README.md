@@ -1,6 +1,6 @@
 # Esker Programming Excercise
 ## Usage
-`$ node coding-excercise.js \<path-to-input-file\>`
+`$ node coding-excercise.js <path-to-input-file>`
 
 ## Assumptions
 * Whitespace is not counted as a character.
