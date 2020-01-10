@@ -43,7 +43,7 @@ function lineParse(line){
 	let wordRegex = /^[a-zA-Z]+$/;
 	let digitRegex = /[0-9]/;
 	let figureRegex = /^[0-9]+$/;
-	let whiteSpaceReg = /[ ,]+/;
+	let whiteSpaceReg = /[ ]+/;
 	lineWords = line.split(whiteSpaceReg);
 	for(var i = 0; i < lineWords.length; i++){
 		let tempWord = lineWords[i];
