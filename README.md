@@ -1,7 +1,7 @@
 # Esker Programming Excercise
 
 ## Prerequisite
-Node.js must be installed to run script. This is to help facilitate system file reading.
+Node.js must be installed to run the script. This is to help facilitate system file reading.
 
 ## Usage
 `$ node coding-excercise.js <path-to-input-file>`
