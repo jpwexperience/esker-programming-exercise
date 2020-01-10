@@ -87,7 +87,7 @@ function infoOutput(path){
 		sortedWords.push([len, wordLengths[len]]);
 	}
 	sortedWords.sort(function(a, b){
-		return b[1] - a[1];
+		return a - b;
 	});
 	for(var i = 0; i < sortedWords.length; i++){
 		let outString = "Number of " + sortedWords[i][0];
